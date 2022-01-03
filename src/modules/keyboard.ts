@@ -123,7 +123,10 @@ export function keyboard(editor: Editor) {
         }
       }
 
-      editor.delete(direction, { dontFixNewline: type.frozen }).formatLine({});
+      if (type.frozen)
+        editor.formatLine({});
+      else
+        editor.delete(direction, { dontFixNewline: type.frozen });
     }
 
 
